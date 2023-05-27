@@ -1,0 +1,79 @@
+from flask import Flask, request
+
+app = Flask(_name_)
+
+# Define a route for the API
+@app.route('/students', methods=['GET'])
+def get_students():
+    # Get the page number and page size from the request parameters
+    page = int(request.args.get('page', 1))
+    page_size = int(request.args.get('page_size', 10))
+
+    # Load student details from the file
+    # Perform any necessary parsing or filtering based on the request parameters
+    # Retrieve the data for the requested page and return it
+
+    # Example implementation:
+    # Assuming students_data is a list containing all student details
+    start_index = (page - 1) * page_size
+    end_index = start_index + page_size
+    paginated_data = students_data[start_index:end_index]
+
+    return {
+        'data': paginated_data,
+        'page': page,
+        'page_size': page_size,
+        'total_students': len(students_data)
+    }
+
+if _name_ == '_main_':
+    app.run()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+app = Flask(_name_)
+
+# Define a route for the API
+@app.route('/students/filter', methods=['POST'])
+def filter_students():
+    filter_criteria = request.json  # Assuming the filter criteria are sent in the request body as JSON
+
+    # Load student details from the file
+    # Perform filtering based on the filter criteria
+    # Return the filtered results
+
+    # Example implementation:
+    filtered_data = []
+    for student in students_data:
+        # Apply filtering logic based on filter_criteria
+        if student['name'] == filter_criteria['name']:
+            filtered_data.append(student)
+
+    return {
+        'filtered_data': filtered_data
+    }
+
+if _name_ == '_main_':
+    app.run()
